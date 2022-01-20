@@ -1,0 +1,11 @@
+cmake_minimum_required(VERSION 3.20)
+project(5)
+
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(.)
+
+add_executable(5
+5.cpp
+functions.hpp
+functions.cpp)
