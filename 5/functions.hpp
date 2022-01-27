@@ -6,7 +6,9 @@ namespace mt
 {
 	void Read(int& n, int mas[N]);
 
-	void DeleteAndDupl(int mas[N], int& n, int& num, int& proizv, int sum);
+	void Delete(int mas[N], int& n, int& num);
+	
+	void Dupl(int mas[N], int& n, int& nu);
 
 	void Write(int& n, int mas[N]);
 }

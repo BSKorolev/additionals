@@ -11,29 +11,72 @@ namespace mt
             cin >> mas[i];
     }
 
-    void DeleteAndDupl(int mas[N],int& n, int& num,int& proizv,int sum)
+    void Delete(int mas[N],int& n, int& num)
     {
         for (int i = 0; i < n; i++)
         {
             num = mas[i];
-            proizv = 1;
-            sum = 0;
 
-            while (num > 0)
+            while (num > 9)
             {
-                int  cifra = num % 10;
-                num = num / 10;
-                sum += cifra;
-                proizv *= cifra;
+                num /=10;
             }
-            if (sum == 18)
+            if (num==2)
             {
                 for (int j = i; j <= n - 1; j++)
                     mas[j] = mas[j + 1];
                 n--;
                 i--;
             }
-            if (proizv % 35==0 && proizv>0)
+        }
+    }
+    
+    void Dupl(int mas[N], int& n, int& nu)
+    {
+        int a, b, c, d;
+        for (int i=0; i < n; i++)
+        {
+            nu = mas[i];
+            if (nu > 1000)
+            {
+                a = nu % 10;
+                b = (nu / 10) % 10;
+                c = (nu / 100) % 10;
+                d = nu / 1000;
+                if (a != b && a!= c && a!= d && b!=c && b!=d && c!=d)
+                {
+                    n++;
+                    for (int j = n - 1; j >= i + 1; j--)
+                        mas[j] = mas[j - 1];
+                    i++;
+                }
+            }
+            else if (1000 > nu && nu > 100)
+            {
+                a = nu % 10;
+                b = (nu / 10) % 10;
+                c = nu / 100;
+                if (a != b && a!= c && c != b)
+                {
+                    n++;
+                    for (int j = n - 1; j >= i + 1; j--)
+                        mas[j] = mas[j - 1];
+                    i++;
+                }
+            }
+            else if (10 < nu && nu < 100)
+            {
+                 a = nu / 10;
+                 b = nu % 10;
+                 if (a != b)
+                 {
+                     n++;
+                     for (int j = n - 1; j >= i + 1; j--)
+                         mas[j] = mas[j - 1];
+                     i++;
+                 }
+            }
+            else if (nu <= 10)
             {
                 n++;
                 for (int j = n - 1; j >= i + 1; j--)
@@ -41,11 +84,10 @@ namespace mt
                 i++;
             }
         }
-
     }
     void Write(int& n, int mas[N]) 
     {
         for (int i = 0; i < n; i++)
-            std::cout << mas[i] << " ";
+            cout << mas[i] << " ";
     }
 }

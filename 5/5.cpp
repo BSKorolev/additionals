@@ -1,13 +1,13 @@
 #include "functions.hpp"
 #include <iostream>
 
-using namespace mt;
+
 int main()
 {
 	int mas[N];
-	int n, num;
-	int proizv = 1,sum = 0;
-	Read(n, mas);
-	DeleteAndDupl(mas,n,num,proizv,sum);
-	Write(n, mas);
+	int n, num, nu;
+	mt::Read(n, mas);
+	mt::Delete(mas, n, num);
+	mt::Dupl(mas, n, nu);
+	mt::Write(n, mas);
 }
